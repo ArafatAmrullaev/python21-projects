@@ -1,34 +1,6 @@
-from itertools import product
 import permissions
-
-class Category:
-    def __init__(self, title):
-        self.title = title
-    def __str__(self):
-        return self.title
-    
-class Product:
-    def __init__(self, title, price, description, quantity):
-        self.title = title
-        self.price = price
-        self.description = description
-        self.quantity = quantity
-    
-    def __str__(self):
-        return f'{self.title} [{self.quantity}] - ${self.price}\n({self.description[:20]})'
-
-class Comment:
-    def __init__(self, user, product,  body):
-        permissions.login_required(user)
-        from datetime import datetime
-        self.user = user
-        self.product = product
-        self.body = body
-        self.created_at = datetime.now()
-    def __str__(self):
-        return f'{self.user.email} [{self.created_at}] - {self.body}'
-
 class User:
+    objects = []
     def __init__(self, email, name, sex):
         self.email = email
         self.name = name
@@ -36,6 +8,7 @@ class User:
         self.__password = None
         self.is_authenticated = False
         print(f'Успешно создан юзер {self.email}')
+        User.objects.append(self)
 
     def register(self, password, password_confirm):
         if password != password_confirm:

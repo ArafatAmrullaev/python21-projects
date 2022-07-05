@@ -1,12 +1,10 @@
-from models import User, Product, Comment
+from shop.models import Product, Category
+from shop.serializers import ProductSerializer
 
-user1 = User('test@gmail.com', 'Hello', 'man')
-
-user1.register('123456789', '123456789')
-user1.login('123456789')
-print(user1.is_authenticated)
-
-product1 = Product('Iphone 12', 1223, '...', 10)
-user1.logout()
-comment1 = Comment(user1, product1, 'Оч классный телефон')
-print(comment1)
+cat = Category('Phones')
+obj1 = Product("iphone", 234, "...", 3, cat)
+obj2 = Product("lenovo", 134, "...", 5, cat)
+obj3 = Product("samsung", 34, "...", 10, cat)
+res = ProductSerializer().serialize_queryset([obj1, obj2, obj3])
+from pprint import pprint
+pprint(res)
