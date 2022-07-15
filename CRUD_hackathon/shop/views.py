@@ -13,9 +13,9 @@ def cars_create():
     price = float(input('Введите цену: '))
     Cars(mark, model, year, volume, color, type_, prob, price)
     print('Машина добавлена!')
-    with open('db.json', 'r') as file:
-        db = json.dump(file)
-    print(db)
+    # with open('db.json', 'r') as file:
+    #     db = json.dump(file)
+    # print(db)
 
 def cars_listing():
     fields = ['Марка', 'Модель', 'Год выпуска', 'Цвет', 'Типа кузова', 'Пробег', 'Цена']
@@ -23,10 +23,10 @@ def cars_listing():
     for car in Cars.objects:
         list_.append({'Марка':str(car.mark), 'Модель':str(car.model), 'Год выпуска':str(car.year), 'Оъем':str(car.volume), 'Цвет':str(car.color), 'Тип кузова':str(car.type_), 'Пробег':str(car.prob), 'Цена':str(car.price)})
     pprint(list_)
-    with open('db.json', 'w+') as file:
-        db = json.dump(list_)
-        file.write(db)
-    print(db)
+    # with open('db.json', 'w+') as file:
+    #     db = json.dump(list_)
+    #     file.write(db)
+    # print(db)
 
 def cars_retrieve(_id):
     list_ = []
@@ -50,21 +50,25 @@ def cars_update(_id):
     list_ = []
     for car in Cars.objects:
         list_.append({'Марка':str(car.mark), 'Модель':str(car.model), 'Год выпуска':str(car.year), 'Оъем':str(car.volume), 'Цвет':str(car.color), 'Тип кузова':str(car.type_), 'Пробег':str(car.prob), 'Цена':str(car.price)})
-    with open('db.json', 'w+') as file:
-        db = json.dump(list_)
-        file.write(db)
-    print(db)
+    # with open('db.json', 'w+') as file:
+    #     db = json.dump(list_)
+    #     file.write(db)
+    # print(db)
 
 
 def cars_delete(_id):
     car = Cars.objects[_id]
     Cars.objects.remove(car)
     print('Машина удалена!')
-    list_ = []
-    for car in Cars.objects:
-        list_.append({'Марка':str(car.mark), 'Модель':str(car.model), 'Год выпуска':str(car.year), 'Оъем':str(car.volume), 'Цвет':str(car.color), 'Тип кузова':str(car.type_), 'Пробег':str(car.prob), 'Цена':str(car.price)})
-    with open('db.json', 'w+') as file:
-        db = json.dump(list_)
-        file.write(db)
-    print(db)
+    # list_ = []
+    # for car in Cars.objects:
+    #     list_.append({'Марка':str(car.mark), 'Модель':str(car.model), 'Год выпуска':str(car.year), 'Оъем':str(car.volume), 'Цвет':str(car.color), 'Тип кузова':str(car.type_), 'Пробег':str(car.prob), 'Цена':str(car.price)})
+    # with open('db.json', 'w+') as file:
+    #     db = json.dump(list_)
+    #     file.write(db)
+    # print(db)
+
     cars_listing()
+cars_create()
+cars_create()
+cars_delete(1)

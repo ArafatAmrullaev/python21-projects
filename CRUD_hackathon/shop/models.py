@@ -15,6 +15,7 @@ class Cars:
         else:
             raise Exception('Выберите правильный тип!')
         Cars.objects.append(self)
+
         Cars._id += 1
 
     # def __str__(self):

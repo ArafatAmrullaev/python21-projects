@@ -1,5 +1,12 @@
 from urls import urlpatterns
 from pprint import pprint
+from shop.views import cars_create, cars_listing, cars_delete, cars_retrieve, cars_update
+cars_create()
+cars_create()
+cars_update(0)
+cars_retrieve(0)
+cars_listing()
+cars_delete(1)
 
 while True:
     try:
